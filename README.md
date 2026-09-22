@@ -6,36 +6,31 @@ PowerShell installer script for Cline CLI on Windows. Automatically installs Nod
 
 ## Quick Start
 
-### Before Installing
+### One-line Install (like PI Agent — no execution policy change needed)
 
-If you haven't already, set the PowerShell execution policy to allow running scripts:
-
-```powershell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
-```
-
-> **Why?** PowerShell's default execution policy may prevent you from running unsigned scripts. This is a one-time setting that allows local scripts to run. [See this Gist](https://gist.github.com/kalpakjian/f97ce9cccf3bee5cdf5013d137e0c66e) for the command.
-
-Alternatively, bypass it for a single run:
-
-```powershell
-irm https://tinyurl.com/cline-win -OutFile install-cline.ps1
-powershell -ExecutionPolicy Bypass -File install-cline.ps1
-```
-
-### Minimal Version (Recommended for most users)
+Works on default Windows — content is **downloaded and executed in-memory** via `Invoke-Expression`, just like `irm https://pi.dev/install.ps1 | iex`:
 
 ```powershell
 irm https://tinyurl.com/cline-win | iex
 ```
 
-Or download and review first:
+### Download and Review First (more secure, but needs execution policy)
 
 ```powershell
 irm https://tinyurl.com/cline-win -OutFile install-cline.ps1
+
+# Review (recommended)
 notepad install-cline.ps1
+
+# Run
 .\install-cline.ps1
 ```
+
+> ⚠️ If running `.\install-cline.ps1` directly throws an execution policy error, run this first:
+> ```powershell
+> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+> ```
+> See this [Gist](https://gist.github.com/kalpakjian/f97ce9cccf3bee5cdf5013d137e0c66e) for the command.
 
 ### Full Version (All features from original pi.dev installer)
 
