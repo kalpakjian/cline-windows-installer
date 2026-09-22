@@ -3,6 +3,11 @@ $ErrorActionPreference = "Stop"
 
 # Cline CLI Windows Installer - Full Version
 # Based on pi.dev/install.ps1 with all features
+#
+# If execution policy blocks this script, run first:
+#   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+# Or bypass it for one run:
+#   powershell -ExecutionPolicy Bypass -File install-cline-full.ps1
 $ClinePackage = "cline"
 $ClineCmd = "cline"
 $NpmMinReleaseAgeArg = "--min-release-age=0"

@@ -6,6 +6,23 @@ PowerShell installer script for Cline CLI on Windows. Automatically installs Nod
 
 ## Quick Start
 
+### Before Installing
+
+If you haven't already, set the PowerShell execution policy to allow running scripts:
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+```
+
+> **Why?** PowerShell's default execution policy may prevent you from running unsigned scripts. This is a one-time setting that allows local scripts to run. [See this Gist](https://gist.github.com/kalpakjian/f97ce9cccf3bee5cdf5013d137e0c66e) for the command.
+
+Alternatively, bypass it for a single run:
+
+```powershell
+irm https://tinyurl.com/cline-win -OutFile install-cline.ps1
+powershell -ExecutionPolicy Bypass -File install-cline.ps1
+```
+
 ### Minimal Version (Recommended for most users)
 
 ```powershell
