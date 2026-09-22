@@ -1,37 +1,38 @@
 # Cline CLI Windows Installer
 
-PowerShell installer script for Cline CLI on Windows. This script works around the npm/Node.js prerequisites by automatically installing Node.js 20+ if needed.
+PowerShell installer script for Cline CLI on Windows. Automatically installs Node.js 20+ if needed.
 
 > **Note**: Cline CLI Windows support is currently in preview. Some features may not work as expected.
 
 ## Quick Start
 
-### Option 1: One-line install (recommended)
+### One-line install
+
+```powershell
+irm https://tinyurl.com/cline-win | iex
+```
+
+### Download and review first (recommended)
+
+```powershell
+irm https://tinyurl.com/cline-win -OutFile install-cline.ps1
+notepad install-cline.ps1
+.\install-cline.ps1
+```
+
+### Full URL (if short link breaks)
 
 ```powershell
 irm https://raw.githubusercontent.com/kalpakjian/cline-windows-installer/main/install-cline.ps1 | iex
 ```
 
-### Option 2: Download and run
-
-```powershell
-# Download
-irm https://raw.githubusercontent.com/kalpakjian/cline-windows-installer/main/install-cline.ps1 -OutFile install-cline.ps1
-
-# Review (optional but recommended)
-notepad install-cline.ps1
-
-# Run
-.\install-cline.ps1
-```
-
 ## What it does
 
-1. Checks if Node.js 20.0.0+ and npm are installed
-2. If not, downloads and installs portable Node.js 20.x (no admin required)
-3. Adds Node.js to your PATH
-4. Runs `npm install -g cline`
-5. You can then use `cline` from any terminal
+1. ✅ Checks if Node.js 20.0.0+ and npm are installed
+2. ✅ Downloads portable Node.js 20.x if missing (no admin required)
+3. ✅ Adds Node.js to your PATH
+4. ✅ Runs `npm install -g cline`
+5. ✅ You can then use `cline` from any terminal
 
 ## Requirements
 
@@ -55,7 +56,12 @@ npm install -g cline
 
 ### "npm is not recognized"
 
-Make sure Node.js is installed and in your PATH. Run `node --version` and `npm --version` to verify.
+Make sure Node.js is installed and in your PATH:
+
+```powershell
+node --version
+npm --version
+```
 
 ### Permission denied errors
 
@@ -63,13 +69,32 @@ This script installs Node.js to `%LOCALAPPDATA%\cline-node` (no admin required).
 
 ### Cline CLI doesn't work on Windows
 
-Cline CLI Windows support is still in preview. If you encounter issues, consider using the VS Code extension instead: [https://marketplace.visualstudio.com/items?itemName=clinelabs.cline-ai](https://marketplace.visualstudio.com/items?itemName=clinelabs.cline-ai)
+Cline CLI Windows support is still in preview. If you encounter issues:
+
+- Check the [official Cline docs](https://docs.cline.bot)
+- Try the [VS Code extension](https://marketplace.visualstudio.com/items?itemName=clinelabs.cline-ai) instead
+- Report an issue on this repo
+
+## Security
+
+This script:
+- Downloads Node.js from official nodejs.org
+- Installs Cline CLI from official npm registry
+- Contains no malicious code (review the source!)
+
+**Always review scripts before running them:**
+
+```powershell
+irm https://tinyurl.com/cline-win -OutFile install-cline.ps1
+notepad install-cline.ps1  # Review first
+.\install-cline.ps1        # Then run
+```
 
 ## Credits
 
-- Original installer: [https://pi.dev/install.ps1](https://pi.dev/install.ps1)
-- Cline CLI: [https://cline.bot](https://cline.bot)
+- Original installer: [pi.dev/install.ps1](https://pi.dev/install.ps1)
+- Cline CLI: [cline.bot](https://cline.bot)
 
 ## License
 
-MIT
+MIT License - see [LICENSE](LICENSE) file for details.
