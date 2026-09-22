@@ -6,13 +6,13 @@ PowerShell installer script for Cline CLI on Windows. Automatically installs Nod
 
 ## Quick Start
 
-### One-line install
+### Minimal Version (Recommended for most users)
 
 ```powershell
 irm https://tinyurl.com/cline-win | iex
 ```
 
-### Download and review first (recommended)
+Or download and review first:
 
 ```powershell
 irm https://tinyurl.com/cline-win -OutFile install-cline.ps1
@@ -20,11 +20,29 @@ notepad install-cline.ps1
 .\install-cline.ps1
 ```
 
-### Full URL (if short link breaks)
+### Full Version (All features from original pi.dev installer)
 
 ```powershell
-irm https://raw.githubusercontent.com/kalpakjian/cline-windows-installer/main/install-cline.ps1 | iex
+irm https://raw.githubusercontent.com/kalpakjian/cline-windows-installer/main/install-cline-full.ps1 | iex
 ```
+
+## Versions Comparison
+
+| Feature | Minimal | Full |
+|---------|---------|------|
+| Auto-install Node.js | ✅ | ✅ |
+| Install Cline CLI | ✅ | ✅ |
+| PATH management | Basic | Advanced |
+| Progress animations | ❌ | ✅ |
+| Color output | ❌ | ✅ |
+| Error handling | Basic | Comprehensive |
+| Code size | ~150 lines | ~250 lines |
+| Best for | Quick install | Debugging/learning |
+
+**Which one should I use?**
+
+- **Minimal version**: If you just want Cline CLI installed quickly
+- **Full version**: If you want all features, better error messages, or are learning PowerShell
 
 ## What it does
 
@@ -39,6 +57,12 @@ irm https://raw.githubusercontent.com/kalpakjian/cline-windows-installer/main/in
 - Windows 10/11
 - PowerShell 5.1+ or PowerShell 7+
 - Internet connection
+
+## Files in this Repo
+
+- `install-cline.ps1` - Minimal version (recommended)
+- `install-cline-full.ps1` - Full version with all features
+- `docs/COMPARISON.md` - Detailed comparison
 
 ## Alternative approach
 
@@ -90,6 +114,21 @@ notepad install-cline.ps1  # Review first
 .\install-cline.ps1        # Then run
 ```
 
+## Development
+
+### Version History
+
+- **v1.0.0** (2026-09-22) - Initial release with minimal and full versions
+
+### Building
+
+Both versions are hand-crafted PowerShell scripts. The minimal version is optimized for:
+- Smaller file size
+- Faster execution
+- Easier to read and audit
+
+The full version preserves all features from the original pi.dev installer.
+
 ## Credits
 
 - Original installer: [pi.dev/install.ps1](https://pi.dev/install.ps1)
@@ -98,3 +137,4 @@ notepad install-cline.ps1  # Review first
 ## License
 
 MIT License - see [LICENSE](LICENSE) file for details.
+
